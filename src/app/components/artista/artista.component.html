@@ -1,0 +1,130 @@
+<app-loading *ngIf="loadingArtist"></app-loading>
+<div class="m-4">
+
+</div>
+
+<div class="row animated fadeIn" *ngIf="!loadingArtist">
+    <div class="col-3">
+        <img [src]="artista.images | noimage" class="img-thumb img-circle">
+    </div>
+
+    <div class="col-8">
+        <h3>{{ artista.name }}</h3>
+        <p>
+            <a [href]="artista.external_urls.spotify" target="_blank">
+          Ir a la página del artista
+        </a>
+        </p>
+
+    </div>
+
+    <div class="col-4 text-right">
+
+        <button routerLink="/search" class="btn btn-outline-danger">
+        Regresar
+      </button>
+
+    </div>
+</div>
+
+<div class="m-2">
+
+</div>
+
+<div class="row ">
+    <div class="col">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Foto</th>
+                    <th>Album</th>
+                    <th>Canción</th>
+                    <th>Vista Previa</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let track of topTracks">
+                    <td>
+                        <img [src]="track.album.images | noimage" class="img-thumb">
+                    </td>
+                    <td>{{ track.album.name }}</td>
+                    <td>{{ track.name }}</td>
+                    <td>
+                        <!-- <audio [src]="track.preview_url" controls></audio>-->
+                        <iframe [src]="track.uri | domseguro" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                        <!-- <iframe src="https://open.spotify.com/embed?uri=spotify:track:57RA3JGafJm5zRtKJiKPIm" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> -->
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+</div>
+<style>
+    body {
+        background-color: black;
+        color: white !important;
+    }
+    
+    hr {
+        border-color: white;
+    }
+    
+    .puntero {
+        cursor: pointer;
+    }
+    
+    .img-circle {
+        border-radius: 10%;
+        width: 350px;
+    }
+    
+    .card-title,
+    .card-text {
+        color: black;
+    }
+    
+    .badge {
+        margin-left: 5px;
+    }
+    
+    .btn-outline-success {
+        margin-left: 5px;
+    }
+    
+    .img-thumb {
+        width: 90px;
+        height: 90px;
+    }
+    /* Animaciones */
+    
+    .animated {
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+    }
+    
+    .fast {
+        -webkit-animation-duration: 0.4s;
+        animation-duration: 0.4s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    
+    .fadeIn {
+        animation-name: fadeIn;
+    }
+</style>
