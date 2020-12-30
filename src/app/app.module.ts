@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 //SERVICIOS
 import { HttpClientModule } from '@angular/common/http';
+import { AuthModule } from '@auth0/auth0-angular';
 
 
 import { AppRoutingModule, ROUTES } from './app-routing.module';
@@ -18,7 +19,13 @@ import { LoadingComponent } from './components/shared/loading/loading.component'
 //PIPES
 import { NoimagePipe } from './pipes/noimage.pipe';
 import { DomseguroPipe } from './pipes/domseguro.pipe';
-import { UsuarioComponent } from './components/usuario/usuario.component'
+import { UsuarioComponent } from './components/usuario/usuario.component';
+import { LoginButtonComponent } from './components/login-button/login-button.component';
+import { SignupButtonComponent } from './components/signup-button/signup-button.component';
+import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
+import { AuthenticationButtonComponent } from './components/authentication-button/authentication-button.component';
+import { AuthNavComponent } from './components/shared/auth-nav/auth-nav.component';
+import { CallbackAuthComponent } from './components/callback-auth/callback-auth.component'
 
 
 //IMPORTAR RUTAS
@@ -35,13 +42,19 @@ import { UsuarioComponent } from './components/usuario/usuario.component'
     DomseguroPipe,
     TarjetasComponent,
     LoadingComponent,
-    UsuarioComponent
+    UsuarioComponent,
+    LoginButtonComponent,
+    SignupButtonComponent,
+    LogoutButtonComponent,
+    AuthenticationButtonComponent,
+    AuthNavComponent,
+    CallbackAuthComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    RouterModule.forRoot(ROUTES, {useHash: true})
+    RouterModule.forRoot(ROUTES, /*{useHash: true}*/)
   ],
   providers: [],
   bootstrap: [AppComponent]

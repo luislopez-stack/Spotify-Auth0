@@ -14,9 +14,16 @@
             <li class="nav-item" routerLinkActive="active">
                 <a class="nav-link" routerLink="search">Search</a>
             </li>
-            <li class="nav-item" routerLinkActive="active">
+            <li class="nav-item" routerLinkActive="active" *ngIf="auth.loggedIn">
                 <a class="nav-link" routerLink="usuario">Usuario</a>
             </li>
+
         </ul>
+
+        <app-auth-nav></app-auth-nav>
+
+
     </div>
+
+
 </nav>

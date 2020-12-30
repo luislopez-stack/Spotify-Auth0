@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SpotifyService } from '../../services/spotify.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -8,12 +9,12 @@ import { SpotifyService } from '../../services/spotify.service';
   styles: [
   ]
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 
   nuevasCanciones: any[] = [];
   loading: boolean;
 
-  constructor( private spotify: SpotifyService) {
+  constructor( private spotify: SpotifyService, private auth : AuthService) {
 
     this.loading = true;
 
@@ -25,7 +26,5 @@ export class HomeComponent implements OnInit {
 
    }
 
-  ngOnInit(): void {
-  }
 
 }
