@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 
 //SERVICIOS
 import { HttpClientModule } from '@angular/common/http';
@@ -27,6 +27,14 @@ import { AuthenticationButtonComponent } from './components/authentication-butto
 import { AuthNavComponent } from './components/shared/auth-nav/auth-nav.component';
 import { CallbackAuthComponent } from './components/callback-auth/callback-auth.component'
 
+//LOCALIZACION & IDIOMA
+import { registerLocaleData } from '@angular/common';
+import  localEs  from '@angular/common/locales/es';
+import { CapitalizadoPipe } from './pipes/capitalizado.pipe';
+import { PipesdomseguroPipe } from './pipes/pipesdomseguro.pipe';
+import { ContrasenapipePipe } from './pipes/contrasenapipe.pipe';
+
+registerLocaleData( localEs);
 
 //IMPORTAR RUTAS
 
@@ -48,7 +56,10 @@ import { CallbackAuthComponent } from './components/callback-auth/callback-auth.
     LogoutButtonComponent,
     AuthenticationButtonComponent,
     AuthNavComponent,
-    CallbackAuthComponent
+    CallbackAuthComponent,
+    CapitalizadoPipe,
+    PipesdomseguroPipe,
+    ContrasenapipePipe
   ],
   imports: [
     BrowserModule,
@@ -56,7 +67,10 @@ import { CallbackAuthComponent } from './components/callback-auth/callback-auth.
     HttpClientModule,
     RouterModule.forRoot(ROUTES, /*{useHash: true}*/)
   ],
-  providers: [],
+  providers: [{
+    provide: LOCALE_ID,
+    useValue: 'ES'
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
