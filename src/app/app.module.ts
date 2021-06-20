@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
+import { FormsModule } from '@angular/forms'
 
 //SERVICIOS
 import { HttpClientModule } from '@angular/common/http';
@@ -15,6 +16,8 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { TarjetasComponent } from './components/tarjetas/tarjetas.component';
 import { LoadingComponent } from './components/shared/loading/loading.component';
+import { PagosComponent } from './components/transaccion/pagos/pagos.component';
+import { PagoComponent } from './components/transaccion/pago/pago.component';
 
 //PIPES
 import { NoimagePipe } from './pipes/noimage.pipe';
@@ -33,6 +36,7 @@ import  localEs  from '@angular/common/locales/es';
 import { CapitalizadoPipe } from './pipes/capitalizado.pipe';
 import { PipesdomseguroPipe } from './pipes/pipesdomseguro.pipe';
 import { ContrasenapipePipe } from './pipes/contrasenapipe.pipe';
+
 
 registerLocaleData( localEs);
 
@@ -59,12 +63,15 @@ registerLocaleData( localEs);
     CallbackAuthComponent,
     CapitalizadoPipe,
     PipesdomseguroPipe,
-    ContrasenapipePipe
+    ContrasenapipePipe,
+    PagosComponent,
+    PagoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     RouterModule.forRoot(ROUTES, /*{useHash: true}*/)
   ],
   providers: [{

@@ -6,6 +6,8 @@ import { SearchComponent } from './components/search/search.component';
 import { ArtistaComponent } from './components/artista/artista.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { CallbackAuthComponent } from './components/callback-auth/callback-auth.component';
+import { PagosComponent} from './components/transaccion/pagos/pagos.component';
+import { PagoComponent } from './components/transaccion/pago/pago.component';
 import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [];
@@ -26,7 +28,9 @@ export const ROUTES: Routes = [
     component: UsuarioComponent,
     canActivate: [ AuthGuard ]
   },
+  {path: 'pagos', component: PagosComponent, canActivate: [ AuthGuard ]},
+  {path: 'pago/:id', component: PagoComponent, canActivate: [ AuthGuard ]},
   { path: 'callbackAuth', component: CallbackAuthComponent},
-  { path: '', pathMatch: 'full', redirectTo: 'home' },
+  //{ path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];
